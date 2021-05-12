@@ -1,0 +1,21 @@
+version: '3.9'
+services:
+  mysql_database:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: welcome3
+    volumes:
+    - cloud-mysql:/var/lib/mysql
+    ports:
+    - 3305:3306
+  pepperfry_application:
+    image: pepperfry:1.0
+    depends_on:
+    - mysql_database
+    ports:
+    - 8082:8080
+    build:
+      context: ./
+      dockerfile: Dockerfile
+volumes:
+  cloud-mysql: null
