@@ -18,4 +18,9 @@ public class ProductService {
 		System.out.println("Executed...");
 		return productRepo.findAll();
 	}
+
+	public int saveProduct(Product product) {
+		Product prod = productRepo.save(product);
+		return prod.getProductNo();
+	}
 }
